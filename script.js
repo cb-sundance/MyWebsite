@@ -4,7 +4,7 @@
 /* This is a
    multi-line comment */
 
-// Display an Alert Dialog Box
+// Alert Function
 function showAlert() {
     alert("Hello! This is an alert box.");
 }
@@ -12,7 +12,7 @@ function showAlert() {
 // Reference Browser & Page Objects
 console.log("Current URL: " + window.location.href);
 
-// Write HTML Code & Text Content into a Page
+// output text
 document.getElementById("output").innerHTML = "JavaScript is working!";
 
 // Work with a Date Object
@@ -25,7 +25,7 @@ function showDate() {
 let x = 10;
 let y = 5;
 console.log("Sum: " + (x + y));
-console.log("Is x greater than y? " + (x < y));
+console.log("Is x less than y? " + (x < y));
 
 // Create a JavaScript Function
 function multiply(a, b) {
@@ -34,7 +34,7 @@ function multiply(a, b) {
 }
 console.log("Multiplication: " + multiply(4, 3));
 
-// Create Timed Commands
+// Simple timer function
 function startTimer() {
     let count = 5;
     let timer = setInterval(function () {
