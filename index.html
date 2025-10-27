@@ -3,51 +3,75 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Portfolio</title>
+  <title>Carissa Bleskie — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
-    <h1>My Portfolio</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container">
+      <h1 class="logo">Carissa Bleskie</h1>
+      <nav class="main-nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section id="about" class="card">
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Hi — I build mobile apps and front-end websites.</h2>
+          <p>I’m currently developing a Kotlin Android app for my capstone and building this portfolio to showcase my work.</p>
+        </div>
+        <img src="images/profile.jpg" alt="Profile photo" class="hero-photo" />
+      </div>
+    </section>
+
+    <section id="about" class="container about">
       <h2>About Me</h2>
-      <p>I'm building an Android app using Kotlin/Jetpack Compose as part of my MWD Capstone. This portfolio will showcase the app and other coding projects. I’m focusing on UI, navigation, data persistence, and deployment.</p>
+      <p>I enjoy practical, clean UI and making apps that people can actually use. I’m learning Kotlin/Jetpack Compose and modern front-end design.</p>
     </section>
 
-    <section id="projects" class="card">
+    <section id="projects" class="container projects">
       <h2>Projects</h2>
-      <ul>
-        <li><strong>Capstone App</strong> — Multi-screen Compose app (Welcome, About Me, Fun Facts).</li>
-        <li><strong>Portfolio Website</strong> — This site, hosted on GitHub Pages.</li>
-      </ul>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="images/app_preview.png" alt="Capstone App preview" />
+          <img src="images/app_preview2.png" alt="Capstone App preview" />
+          <h3>Capstone Android App</h3>
+          <p>Kotlin app with dark/light mode, navigation, saved preferences, and multi-screen UI. Repo: <a href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener">GitHub</a></p>
+        </article>
+
+        <article class="project-card">
+          <img src="images/website_preview.png" alt="The beginning of my website" />
+          <h3>Portfolio Website</h3>
+          <p>Responsive HTML/CSS site to showcase projects, with mobile-first layout and clear navigation.</p>
+        </article>
+
+        <article class="project-card">
+          <img src="images/future_project.png" alt="Future project" />
+          <h3>Other Work</h3>
+          <p>Additional projects and coursework will be added here as I complete them.</p>
+        </article>
+      </div>
     </section>
 
-    <section id="contact" class="card">
+    <section id="contact" class="container contact">
       <h2>Contact</h2>
-      <form id="contactForm" onsubmit="return false;">
-        <label for="name">Name</label>
-        <input id="name" type="text" placeholder="Your name" />
-        <label for="email">Email</label>
-        <input id="email" type="email" placeholder="you@example.com" />
-        <label for="message">Message</label>
-        <textarea id="message" placeholder="Say hi..."></textarea>
-        <button id="sendBtn" type="button">Send (demo)</button>
-      </form>
+      <p>Email: <a href="mailto:carissa.bleskie@example.com">carissa.bleskie@example.com</a></p>
+      <div class="contact-links">
+        <a class="btn" href="https://github.com/cb-sundance" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© Your Name</p>
+    <div class="container">
+      <small>© 2025 Carissa Bleskie — Portfolio</small>
+    </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
