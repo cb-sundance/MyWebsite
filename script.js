@@ -4,6 +4,7 @@
   script.js
   - Form validation & submit simulation
   - Small UI helpers (timer, date, theme toggle)
+  - QR modal handling for the app release link
   - Defensive: checks for element existence to avoid runtime errors
 */
 
@@ -150,6 +151,58 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  /* ---------- QR modal logic ---------- */
+  const qrModal = $("qrModal");
+  const qrImage = $("qrImage");
+  const qrLabel = $("qrLabel");
+  const qrLink = $("qrLink");
+  const openQrBtn = $("openQrBtn");
+  const closeQrBtn = $("closeQr");
+
+  // open QR for any button with id openQrBtn (if multiple later, change to class)
+  if (openQrBtn && qrModal && qrImage) {
+    openQrBtn.addEventListener("click", function () {
+      const url = openQrBtn.getAttribute("data-qr-url") || window.location.href;
+      // Use Google Chart API to create a QR image (simple). If you prefer self-hosted, replace this.
+      const qrSrc = "https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=" + encodeURIComponent(url);
+      qrImage.src = qrSrc;
+      qrLabel.textContent = url;
+      qrLink.href = url;
+      qrModal.setAttribute("aria-hidden", "false");
+      // trap focus to modal for accessibility (basic)
+      setTimeout(() => {
+        if (closeQrBtn) closeQrBtn.focus();
+      }, 50);
+    });
+  }
+
+  if (closeQrBtn && qrModal) {
+    closeQrBtn.addEventListener("click", function () {
+      qrModal.setAttribute("aria-hidden", "true");
+      // return focus to the QR open button
+      if (openQrBtn) openQrBtn.focus();
+    });
+  }
+
+  // close modal when clicking outside content
+  if (qrModal) {
+    qrModal.addEventListener("click", function (e) {
+      if (e.target === qrModal) {
+        qrModal.setAttribute("aria-hidden", "true");
+        if (openQrBtn) openQrBtn.focus();
+      }
+    });
+  }
+
+  // close with Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && qrModal && qrModal.getAttribute("aria-hidden") === "false") {
+      qrModal.setAttribute("aria-hidden", "true");
+      if (openQrBtn) openQrBtn.focus();
+    }
+  });
+
   // Defensive console log for debugging in development
   console.log("script.js initialized");
 });
+
