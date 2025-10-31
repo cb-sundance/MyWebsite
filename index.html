@@ -4,74 +4,120 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Carissa Bleskie — Portfolio</title>
+  <meta name="description" content="Portfolio of Carissa Bleskie — Kotlin Android developer and front-end web developer. Showcases capstone app and coding projects." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
       <h1 class="logo">Carissa Bleskie</h1>
-      <nav class="main-nav">
+      <nav class="main-nav" role="navigation" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button id="themeToggle" aria-label="Toggle color theme" class="theme-toggle">🌗</button>
     </div>
   </header>
 
   <main>
-    <section id="hero" class="hero">
-      <div class="container hero-inner">
+    <section id="hero" class="hero container" aria-labelledby="hero-heading">
+      <div class="hero-inner">
         <div class="hero-text">
-          <h2>Hi — I build mobile apps and front-end websites.</h2>
-          <p>I’m currently developing a Kotlin Android app for my capstone and building this portfolio to showcase my work.</p>
+          <h2 id="hero-heading">Hi — I build mobile apps and front-end websites.</h2>
+          <p>I’m currently developing a Kotlin Android app for my capstone and building this portfolio to showcase my work. This site is responsive and includes a contact form with client-side validation.</p>
+
+          <!-- small status widgets used by script.js -->
+          <div class="widgets">
+            <div id="output" class="widget" aria-live="polite"></div>
+            <div id="date" class="widget" aria-live="polite"></div>
+            <div id="timer" class="widget" aria-live="polite"></div>
+            <div class="hero-actions">
+              <button class="btn" id="startTimerBtn">Start Quick Timer</button>
+              <button class="btn" id="showAlertBtn">Show Alert</button>
+            </div>
+          </div>
         </div>
-        <img src="images/profile.jpg" alt="Profile photo" class="hero-photo" />
+
+        <img src="images/profile.jpg" alt="Profile photo of Carissa Bleskie" class="hero-photo" />
       </div>
     </section>
 
     <section id="about" class="container about">
       <h2>About Me</h2>
-      <p>I enjoy practical, clean UI and making apps that people can actually use. I’m learning Kotlin/Jetpack Compose and modern front-end design.</p>
+      <p>I enjoy practical, clean UI and making apps that people can actually use. I’m learning Kotlin/Jetpack Compose and modern front-end design. I use version control (Git/GitHub) and deploy projects with GitHub Pages.</p>
     </section>
 
-    <section id="projects" class="container projects">
-      <h2>Projects</h2>
-      <div class="project-grid">
-        <article class="project-card">
-          <img src="images/app_preview.png" alt="Capstone App preview" />
-          <img src="images/app_preview2.png" alt="Capstone App preview" />
+    <section id="projects" class="container projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <div class="project-grid" role="list">
+        <article class="project-card" role="listitem">
+          <img src="images/app_preview.png" alt="Capstone Android app preview screenshot" />
           <h3>Capstone Android App</h3>
-          <p>Kotlin app with dark/light mode, navigation, saved preferences, and multi-screen UI. Repo: <a href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener">GitHub</a></p>
+          <p>Kotlin app with dark/light mode, navigation, saved preferences, and multi-screen UI. Repo: <a href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </article>
 
-        <article class="project-card">
-          <img src="images/website_preview.png" alt="The beginning of my website" />
+        <article class="project-card" role="listitem">
+          <img src="images/website_preview.png" alt="Portfolio website preview" />
           <h3>Portfolio Website</h3>
-          <p>Responsive HTML/CSS site to showcase projects, with mobile-first layout and clear navigation.</p>
+          <p>Responsive HTML/CSS site to showcase projects, with mobile-first layout and clear navigation. This live site is deployed to GitHub Pages (link in Contact).</p>
         </article>
 
-        <article class="project-card">
-          <img src="coming_soon.png" alt="Future project" />
+        <article class="project-card" role="listitem">
+          <img src="images/coming_soon.png" alt="Placeholder for future project" />
           <h3>Other Work</h3>
           <p>Additional projects and coursework will be added here as I complete them.</p>
         </article>
       </div>
     </section>
 
-    <section id="contact" class="container contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:bleskiecarissa@gmail.com">bleskiecarissa@gmail.com</a> </p>
+    <section id="contact" class="container contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+
+      <p>Email: <a href="mailto:bleskiecarissa@gmail.com">bleskiecarissa@gmail.com</a></p>
       <div class="contact-links">
-        <a class="btn" href="https://github.com/cb-sundance" target="_blank" rel="noopener">GitHub</a> 
-        <a class="btn" href="https://www.linkedin.com/in/carissa-bleskie-083645243/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/cb-sundance" target="_blank" rel="noopener noreferrer">GitHub</a> 
+        <a class="btn" href="https://www.linkedin.com/in/carissa-bleskie-083645243/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="https://cb-sundance.github.io/" target="_blank" rel="noopener noreferrer">Live site (GitHub Pages)</a>
       </div>
+
+      <!-- Contact form required by rubric -->
+      <form id="contactForm" class="contact-form" novalidate>
+        <!-- honeypot to reduce spam -->
+        <label class="visually-hidden" for="fax">Fax</label>
+        <input id="fax" name="fax" type="text" class="honeypot" autocomplete="off" />
+
+        <div class="form-row">
+          <label for="name">Name <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" required placeholder="Your name" />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com" />
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or question"></textarea>
+        </div>
+
+        <div class="form-row">
+          <button type="submit" class="btn">Send Message</button>
+          <button type="button" id="clearForm" class="btn btn-secondary">Clear</button>
+        </div>
+
+        <div id="formStatus" class="form-status" aria-live="polite"></div>
+      </form>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="container">
       <small>© 2025 Carissa Bleskie — Portfolio</small>
     </div>
   </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
