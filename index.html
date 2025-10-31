@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Carissa Bleskie — Portfolio</title>
   <meta name="description" content="Portfolio of Carissa Bleskie — Kotlin Android developer and front-end web developer. Showcases capstone app and coding projects." />
+  <!-- Google Analytics (replace G-XXXXXXXXXX with your Measurement ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // TODO: replace with your real measurementId before deploying
+    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+  </script>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -55,6 +65,10 @@
           <img src="images/app_preview.png" alt="Capstone Android app preview screenshot" />
           <h3>Capstone Android App</h3>
           <p>Kotlin app with dark/light mode, navigation, saved preferences, and multi-screen UI. Repo: <a href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+          <p>
+            <button class="btn" id="openQrBtn" data-qr-url="https://github.com/cb-sundance/CapstoneApp/releases">Open app QR</button>
+            <a class="btn" href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener noreferrer">View Repo</a>
+          </p>
         </article>
 
         <article class="project-card" role="listitem">
@@ -117,6 +131,17 @@
       <small>© 2025 Carissa Bleskie — Portfolio</small>
     </div>
   </footer>
+
+  <!-- QR modal -->
+  <div id="qrModal" class="qr-modal" aria-hidden="true" role="dialog" aria-label="App QR code">
+    <div class="qr-modal-content" role="document">
+      <button id="closeQr" class="qr-close" aria-label="Close QR dialog">✕</button>
+      <h3>Scan to open the app release / download</h3>
+      <p id="qrLabel" class="qr-label"></p>
+      <img id="qrImage" src="" alt="QR code linking to app releases" width="220" height="220" />
+      <p><a id="qrLink" href="#" target="_blank" rel="noopener noreferrer">Open link in new tab</a></p>
+    </div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
