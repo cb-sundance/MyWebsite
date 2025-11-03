@@ -33,7 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = $("themeToggle");
   if (themeToggle) {
     const savedMode = localStorage.getItem("theme");
-    if (savedMode === "dark") document.documentElement.classList.add("site-dark");
+    if (savedMode === "dark") {
+  document.documentElement.classList.add("site-dark");
+  themeToggle.textContent = "☀️";  // show sun when dark is active
+}
+
+    
 
     themeToggle.addEventListener("click", () => {
       document.documentElement.classList.toggle("site-dark");
