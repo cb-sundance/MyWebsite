@@ -67,7 +67,7 @@
           <h3>Capstone Android App</h3>
           <p>Kotlin app with dark/light mode, navigation, saved preferences, and multi-screen UI. Repo: <a href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener noreferrer">GitHub</a></p>
           <p>
-            <button class="btn" id="openQrBtn" data-qr-url="https://github.com/cb-sundance/CapstoneApp/releases">Open app QR</button>
+            <button class="btn openQrBtn" data-qr-url="https://github.com/cb-sundance/CapstoneApp/releases">Open app QR</button>
             <a class="btn" href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener noreferrer">View Repo</a>
           </p>
         </article>
@@ -136,10 +136,38 @@
       <button id="closeQr" class="qr-close" aria-label="Close QR dialog">✕</button>
       <h3>Scan to open the app release / download</h3>
       <p id="qrLabel" class="qr-label"></p>
-      <img id="qrImage" src="" alt="QR code linking to app releases" width="220" height="220" />
+      <img id="qrImage" src="images/capstone_qr.png" alt="QR code linking to app releases" width="220" height="220" />
       <p><a id="qrLink" href="#" target="_blank" rel="noopener noreferrer">Open link in new tab</a></p>
     </div>
   </div>
+
+  <script>
+    // QR Modal JS
+    const qrModal = document.getElementById('qrModal');
+    const qrImage = document.getElementById('qrImage');
+    const qrLink = document.getElementById('qrLink');
+    const qrButtons = document.querySelectorAll('.openQrBtn');
+    const qrClose = document.getElementById('closeQr');
+
+    qrButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-qr-url');
+        qrLink.href = url;
+        qrModal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    qrClose.addEventListener('click', () => {
+      qrModal.setAttribute('aria-hidden', 'true');
+    });
+
+    // Close modal if click outside content
+    qrModal.addEventListener('click', e => {
+      if (e.target === qrModal) {
+        qrModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  </script>
 
   <script src="script.js" defer></script>
 </body>
