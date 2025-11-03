@@ -31,11 +31,11 @@
   </header>
 
   <main>
-    <section id="hero" class="hero container" aria-labelledby="hero-heading">
+    <section id="hero" class="hero container fade-in" aria-labelledby="hero-heading">
       <div class="hero-inner">
         <div class="hero-text">
           <h2 id="hero-heading">Welcome to my portfolio — I'm a new developer who builds mobile apps and front-end websites.</h2>
-          <p>I’m currently developing a Kotlin Android app for my capstone and building this portfolio to showcase my work. This site is responsive and includes a contact form with client-side validation.</p>
+          <p>I’m currently developing a Kotlin Android app for my capstone and building this portfolio to showcase my work.</p>
 
           <div class="widgets">
             <div id="output" class="widget" aria-live="polite"></div>
@@ -52,54 +52,51 @@
       </div>
     </section>
 
-    <section id="about" class="container about">
+    <section id="about" class="container about fade-in">
       <h2>About Me</h2>
-      <p>I enjoy practical, clean UI and making apps that people can actually use. I’m learning Kotlin/Jetpack Compose and modern front-end design. I use version control (Git/GitHub) and deploy projects with GitHub Pages.</p>
-      <p>In my spare time, I love exploring nature and also gaming.</p>
-      <p>I'm always looking to learn new skills and expand on my knowledge regarding all forms of technology.</p>
+      <p>I enjoy practical, clean UI and making apps that people can actually use. I’m learning Kotlin/Jetpack Compose and modern front-end design.</p>
+      <p>In my spare time, I love exploring nature and gaming.</p>
+      <p>I'm always looking to learn new skills and expand on my knowledge regarding technology.</p>
     </section>
 
-    <section id="projects" class="container projects" aria-labelledby="projects-heading">
+    <section id="projects" class="container projects fade-in" aria-labelledby="projects-heading">
       <h2 id="projects-heading">Projects</h2>
       <div class="project-grid" role="list">
         <article class="project-card" role="listitem">
-          <img src="images/app_preview.png" alt="Capstone Android app preview screenshot" />
+          <img src="images/app_preview.png" alt="Capstone Android app preview screenshot" class="project-img" />
           <h3>Capstone Android App</h3>
-          <p>Kotlin app with dark/light mode, navigation, saved preferences, and multi-screen UI. Repo: <a href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+          <p>Kotlin app with dark/light mode, navigation, saved preferences, and multi-screen UI.</p>
           <p>
-            <button class="btn openQrBtn" data-qr-url="https://github.com/cb-sundance/CapstoneApp/releases">Open app QR</button>
+            <button class="btn openQrBtn" data-qr-url="https://github.com/cb-sundance/CapstoneApp/releases/download/Deployment/app-release.apk">Open app QR</button>
             <a class="btn" href="https://github.com/cb-sundance/CapstoneApp" target="_blank" rel="noopener noreferrer">View Repo</a>
           </p>
         </article>
 
         <article class="project-card" role="listitem">
-          <img src="images/website_preview.png" alt="Portfolio website preview" />
+          <img src="images/website_preview.png" alt="Portfolio website preview" class="project-img" />
           <h3>Portfolio Website</h3>
-          <p>Responsive HTML/CSS site to showcase projects, with mobile-first layout and clear navigation. This live site is deployed to GitHub Pages (link in Contact).</p>
+          <p>Responsive HTML/CSS site to showcase projects — mobile-first with clear navigation.</p>
         </article>
 
         <article class="project-card" role="listitem">
-          <img src="images/coming_soon.png" alt="Placeholder for future project" />
+          <img src="images/coming_soon.png" alt="Placeholder for future project" class="project-img" />
           <h3>Other Work</h3>
-          <p>Additional projects and coursework will be added here as I complete them and expand my skills.</p>
+          <p>Additional projects will be added as I continue expanding my skills.</p>
         </article>
       </div>
     </section>
 
-    <section id="contact" class="container contact" aria-labelledby="contact-heading">
+    <section id="contact" class="container contact fade-in" aria-labelledby="contact-heading">
       <h2 id="contact-heading">Contact</h2>
 
       <p>Email: <a href="mailto:bleskiecarissa@gmail.com">bleskiecarissa@gmail.com</a></p>
       <div class="contact-links">
         <a class="btn" href="https://github.com/cb-sundance" target="_blank" rel="noopener noreferrer">GitHub</a> 
         <a class="btn" href="https://www.linkedin.com/in/carissa-bleskie-083645243/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="btn" href="https://cb-sundance.github.io/MyWebsite/" target="_blank" rel="noopener noreferrer">Live site (GitHub Pages)</a>
+        <a class="btn" href="https://github.com/cb-sundance/MyWebsite/deployments/github-pages" target="_blank" rel="noopener noreferrer">Live site (GitHub Pages)</a>
       </div>
 
       <form id="contactForm" class="contact-form" novalidate>
-        <label class="visually-hidden" for="fax">Fax</label>
-        <input id="fax" name="fax" type="text" class="honeypot" autocomplete="off" />
-
         <div class="form-row">
           <label for="name">Name <span aria-hidden="true">*</span></label>
           <input id="name" name="name" type="text" required placeholder="Your name" />
@@ -131,18 +128,18 @@
     </div>
   </footer>
 
+  <!-- QR Modal -->
   <div id="qrModal" class="qr-modal" aria-hidden="true" role="dialog" aria-label="App QR code">
     <div class="qr-modal-content" role="document">
       <button id="closeQr" class="qr-close" aria-label="Close QR dialog">✕</button>
       <h3>Scan to open the app release / download</h3>
-      <p id="qrLabel" class="qr-label"></p>
       <img id="qrImage" src="images/capstone_qr.png" alt="QR code linking to app releases" width="220" height="220" />
       <p><a id="qrLink" href="#" target="_blank" rel="noopener noreferrer">Open link in new tab</a></p>
     </div>
   </div>
 
   <script>
-    // QR Modal JS
+    // QR Modal
     const qrModal = document.getElementById('qrModal');
     const qrImage = document.getElementById('qrImage');
     const qrLink = document.getElementById('qrLink');
@@ -151,8 +148,7 @@
 
     qrButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const url = btn.getAttribute('data-qr-url');
-        qrLink.href = url;
+        qrLink.href = btn.getAttribute('data-qr-url');
         qrModal.setAttribute('aria-hidden', 'false');
       });
     });
@@ -161,12 +157,19 @@
       qrModal.setAttribute('aria-hidden', 'true');
     });
 
-    // Close modal if click outside content
     qrModal.addEventListener('click', e => {
-      if (e.target === qrModal) {
-        qrModal.setAttribute('aria-hidden', 'true');
-      }
+      if (e.target === qrModal) qrModal.setAttribute('aria-hidden', 'true');
     });
+
+    // Fade-in on scroll
+    const animatedSections = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    animatedSections.forEach(sec => observer.observe(sec));
   </script>
 
   <script src="script.js" defer></script>
